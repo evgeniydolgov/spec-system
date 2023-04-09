@@ -1,10 +1,125 @@
-.reg_container {
+.register__page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 510px;
+  height: 100%;
+}
+
+.hook_image {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  z-index: 0;
+}
+
+.hook_image > :nth-child(1) {
+  height: 180px;
+}
+
+.register__container {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
-  width: 411px;
-  height: 504px;
+  width: 100%;
+  height: 605px;
   box-shadow: -10px 7px 20px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+  z-index: 1;
+}
+
+.register__logo {
+  margin-top: 54px;
+}
+
+.register__telephone {
+  position: relative;
+  width: 340px;
+  margin-top: 34px;
+}
+
+.register__telephone > :nth-child(1) {
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #989898;
+}
+
+.register__input {
+  margin-top: 6px;
+}
+
+.register__input > :nth-child(1) {
+  width: 98%;
+  height: 25px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+}
+
+.register__input > :nth-child(1)::placeholder {
+  font-family: 'Manrope';
+  color: #a29d9d;
+  font-style: italic;
+}
+
+.register__password {
+  position: relative;
+  margin-top: 18px;
+}
+
+.register__password > :nth-child(1) {
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: #989898;
+}
+
+.register__restore {
+  margin: 15px 0;
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #f6b52e;
+  text-align: end;
+  cursor: pointer;
+}
+
+.login__button {
+  margin: 40px 0 0 0;
+  position: relative;
+}
+
+.login__button > :nth-child(1) {
+  width: 100%;
+  height: 44px;
+  border: none;
+  background: #f2b705;
+  border-radius: 5px;
+  color: #fff;
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  cursor: pointer;
+}
+
+.error__input {
+  position: absolute;
+  top: 42px;
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 19px;
+  color: red;
+  font-style: italic;
+}
+
+.wrong__data {
+  font-size: 14px;
+  right: 0;
 }
