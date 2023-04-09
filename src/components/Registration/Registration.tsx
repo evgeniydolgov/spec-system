@@ -10,7 +10,8 @@ type Inputs = {
 };
 
 export const Registration = () => {
-  const [tel, setTel] = useState<string>(' ');
+  const [registeredUser, setRegisteredUser] = useState<boolean>();
+  const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const {
     register,
@@ -19,7 +20,13 @@ export const Registration = () => {
   } = useForm<Inputs>({ mode: 'onSubmit' });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    return console.log(data);
+    if (data.telephone === '+7 111 111 11 11' && data.password === '123456') {
+      setRegisteredUser(true);
+      setErrorMessage(false);
+    } else {
+      setRegisteredUser(false);
+      setErrorMessage(true);
+    }
   };
 
   return (
@@ -64,7 +71,8 @@ export const Registration = () => {
         </label>
         {errors.password && <p>{errors.password?.message}</p>}
         <p>Забыли пароль?</p>
-        <input type='submit' name='Войти' />
+        {errorMessage && <p>Неверный логин или пароль</p>}
+        <input type='submit' value={'Войти'} />
       </form>
     </div>
   );
