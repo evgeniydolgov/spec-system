@@ -1,10 +1,22 @@
+.card__name {
+  font-family: 'Manrope';
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 19px;
+  color: #989898;
+}
+
 .register__telephone {
-  position: relative;
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
   width: 340px;
-  margin-top: 34px;
+  position: relative;
 }
 
 .register__telephone > :nth-child(1) {
+  margin-top: 0;
+  text-align: left;
   font-family: 'Manrope';
   font-weight: 600;
   font-size: 14px;
@@ -30,11 +42,15 @@
 }
 
 .register__password {
+  display: flex;
+  flex-direction: column;
+  transition: 1s;
   position: relative;
   margin-top: 18px;
 }
 
 .register__password > :nth-child(1) {
+  text-align: left;
   font-family: 'Manrope';
   font-weight: 600;
   font-size: 14px;
@@ -54,7 +70,7 @@
 }
 
 .login__button {
-  margin: 40px 0 0 0;
+  margin: 60px 0 0 0;
   position: relative;
 }
 
