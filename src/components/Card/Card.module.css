@@ -41,3 +41,21 @@
 .register__logo {
   margin-top: 54px;
 }
+
+@media (max-width: 620px) {
+  .register__page {
+    width: 300px;
+  }
+
+  .register__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hook__image {
+    left: 90px;
+  }
+  .hook__image_reverse {
+    left: 100px;
+  }
+}

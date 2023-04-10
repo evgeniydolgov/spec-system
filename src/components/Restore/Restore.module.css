@@ -103,3 +103,16 @@
   font-size: 14px;
   right: 0;
 }
+
+@media (max-width: 620px) {
+  .register__telephone {
+    width: 240px;
+  }
+
+  .login__button {
+    margin: 15px 0 0 0;
+  }
+  .register__restore {
+    margin: 20px 0 0 0;
+  }
+}
