@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './RegisterPage.module.css';
-import { Registration } from '../../components/Registration';
 import { Card } from '../../components/Card';
 
 export const RegisterPage = () => {

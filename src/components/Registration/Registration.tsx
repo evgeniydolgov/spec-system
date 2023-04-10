@@ -79,7 +79,7 @@ export const Registration = ({ setCardDraws }: ICardDraws) => {
       </p>
       <div className={styles.login__button}>
         <input type='submit' value={'ВОЙТИ'} />
-        {errorMessage && <p className={styles.error__input + ' ' + styles.wrong__data}>Неверный логин или пароль</p>}
+        {errorMessage && <p className={`${styles.error__input} ${styles.wrong__data}`}>Неверный логин или пароль</p>}
       </div>
     </form>
   );
