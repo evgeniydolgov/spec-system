@@ -35,7 +35,7 @@ export const RegisterPage = () => {
       </div>
       {cardDraws === 'entered' && (
         <div className={styles.welcome__page}>
-          <p>Добро пожаловать на сайт User1</p>
+          <p>Добро пожаловать на сайт, User1</p>
           <button onClick={backToRegistration}>Выйти</button>
         </div>
       )}

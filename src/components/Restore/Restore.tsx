@@ -11,7 +11,7 @@ type Inputs = {
 
 export const Restore = ({ setCardDraws, setSavedPhoneNumber }: ICardDraws) => {
   const [passwordSent, setPasswordSent] = useState<boolean>(false);
-  const [wrongPassword, setWrongPassword] = useState('');
+  const [wrongPassword, setWrongPassword] = useState(false);
 
   const callToUser = () => {
     setPasswordSent(true);
@@ -30,12 +30,15 @@ export const Restore = ({ setCardDraws, setSavedPhoneNumber }: ICardDraws) => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     if (data.telephone === '+7 111 111 11 11') {
       callToUser();
-      setWrongPassword(data.password);
-      console.log(typeof data.password);
+      const { password } = data;
+      if (password !== '123456' && password !== '') {
+        setWrongPassword(true);
+      }
     }
     if (data.password === '123456') {
       setSavedPhoneNumber && setSavedPhoneNumber('+7 111 111 11 11');
       backToRegistration();
+      setWrongPassword(false);
     }
   };
   return (
@@ -72,7 +75,7 @@ export const Restore = ({ setCardDraws, setSavedPhoneNumber }: ICardDraws) => {
             <input type='password' {...register('password')} />
           </div>
         </label>
-        {wrongPassword === '123456' && <p className={styles.error__input}>{errors.password?.message}</p>}
+        {wrongPassword && <p className={styles.error__input}>неверный пароль</p>}
       </div>
       <p className={styles.register__restore} onClick={backToRegistration}>
         Вернуться к авторизации?
