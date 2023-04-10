@@ -9,8 +9,7 @@ type Inputs = {
   password: string;
 };
 
-export const Registration = ({ setCardDraws }: ICardDraws) => {
-  const [registeredUser, setRegisteredUser] = useState<boolean>();
+export const Registration = ({ setCardDraws, savedPhoneNumber, rigthPassword }: ICardDraws) => {
   const [errorMessage, setErrorMessage] = useState<boolean>(false);
 
   const changeModal = () => {
@@ -21,14 +20,17 @@ export const Registration = ({ setCardDraws }: ICardDraws) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({ mode: 'onSubmit', reValidateMode: 'onSubmit' });
+  } = useForm<Inputs>({
+    defaultValues: { telephone: savedPhoneNumber, password: rigthPassword },
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
+  });
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     if (data.telephone === '+7 111 111 11 11' && data.password === '123456') {
-      setRegisteredUser(true);
       setErrorMessage(false);
+      setCardDraws('entered');
     } else {
-      setRegisteredUser(false);
       setErrorMessage(true);
     }
   };

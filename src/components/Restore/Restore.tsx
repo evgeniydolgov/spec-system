@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import styles from './Restore.module.css';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
+import { ICardDraws } from '../Card/Card';
 
 type Inputs = {
   telephone: string;
   password: string;
 };
 
-export const Restore = () => {
+export const Restore = ({ setCardDraws, setSavedPhoneNumber }: ICardDraws) => {
   const [passwordSent, setPasswordSent] = useState<boolean>(false);
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
-
-  // const checkPhone = (e: KeyboardEventHandler<HTMLInputElement>) => {
-  //   setPhoneNumber(e.ta);
-  // };
+  const [wrongPassword, setWrongPassword] = useState('');
 
   const callToUser = () => {
     setPasswordSent(true);
+  };
+
+  const backToRegistration = () => {
+    setCardDraws('register');
   };
 
   const {
@@ -29,9 +30,12 @@ export const Restore = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     if (data.telephone === '+7 111 111 11 11') {
       callToUser();
+      setWrongPassword(data.password);
+      console.log(typeof data.password);
     }
     if (data.password === '123456') {
-      console.log(1223);
+      setSavedPhoneNumber && setSavedPhoneNumber('+7 111 111 11 11');
+      backToRegistration();
     }
   };
   return (
@@ -68,8 +72,11 @@ export const Restore = () => {
             <input type='password' {...register('password')} />
           </div>
         </label>
-        {errors.password && <p className={styles.error__input}>{errors.password?.message}</p>}
+        {wrongPassword === '123456' && <p className={styles.error__input}>{errors.password?.message}</p>}
       </div>
+      <p className={styles.register__restore} onClick={backToRegistration}>
+        Вернуться к авторизации?
+      </p>
       <div className={styles.login__button}>
         <input type='submit' value={!passwordSent ? 'ПОЗВОНИТЬ' : 'Восстановить пароль'} />
       </div>
